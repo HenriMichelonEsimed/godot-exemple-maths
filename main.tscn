@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv45k5sekumtd"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_7w2d3"]
+[ext_resource type="Script" path="res://vecteurs.gd" id="2_aquw8"]
+[ext_resource type="Texture2D" uid="uid://uehhm1qecylf" path="res://icon.svg" id="4_fph8r"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_7w2d3")
+
+[node name="Vectors" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_aquw8")
+
+[node name="Transforms" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Transforms"]
+position = Vector2(64, 64)
+texture = ExtResource("4_fph8r")
+
+[node name="UI" type="Control" parent="Transforms"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 320.0
+offset_right = 672.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Menu" type="HBoxContainer" parent="Transforms/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Translate" type="Button" parent="Transforms/UI/Menu"]
+layout_mode = 2
+text = "Translate"
+
+[node name="Rotate" type="Button" parent="Transforms/UI/Menu"]
+layout_mode = 2
+text = "Rotate
+"
+
+[node name="Scale" type="Button" parent="Transforms/UI/Menu"]
+layout_mode = 2
+text = "Scale"
+
+[connection signal="pressed" from="Transforms/UI/Menu/Translate" to="." method="_on_translate_pressed"]
+[connection signal="pressed" from="Transforms/UI/Menu/Rotate" to="." method="_on_rotate_pressed"]
+[connection signal="pressed" from="Transforms/UI/Menu/Scale" to="." method="_on_scale_pressed"]
